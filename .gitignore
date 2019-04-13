@@ -3,3 +3,5 @@ public
 var
 vendor
 .idea
+node_modules
+!Resources/Public
