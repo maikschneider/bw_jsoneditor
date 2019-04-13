@@ -22,6 +22,9 @@
       "TYPO3/CMS/Jsoneditor/*": [
         "Resources/Public/JavaScript/*",
         "Resources/Private/TypeScript/*"
+      ],
+      "Josdejong/*": [
+        "./node_modules/"
       ]
     },
     "outDir": "./Resources/Public/JavaScript",
