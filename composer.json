@@ -1,0 +1,32 @@
+{
+  "name": "blueways/bw-jsoneditor",
+  "type": "typo3-cms-extension",
+  "description": "Adds a JSON form editor",
+  "homepage": "https://blueways.de",
+  "license": "MIT",
+  "keywords": [
+    "TYPO3 CMS"
+  ],
+  "version": "1.0.0",
+  "require-dev": {
+    "typo3/cms-base-distribution": "^9.0"
+  },
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": "public"
+    }
+  },
+  "config": {
+    "bin-dir": "bin",
+    "vendor-dir": "vendor",
+    "platform": {
+      "php": "7.2"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Blueways\\BwJsoneditor\\": "Classes/"
+    }
+  }
+}
