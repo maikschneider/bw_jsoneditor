@@ -8,6 +8,7 @@
       "es6"
     ],
     "module": "amd",
+    "moduleResolution": "node",
     "sourceMap": false,
     "removeComments": false,
     "alwaysStrict": true,
@@ -19,12 +20,8 @@
     "pretty": true,
     "baseUrl": ".",
     "paths": {
-      "TYPO3/CMS/Jsoneditor/*": [
-        "Resources/Public/JavaScript/*",
-        "Resources/Private/TypeScript/*"
-      ],
-      "Josdejong/*": [
-        "./node_modules/"
+      "TYPO3/CMS/BwJsoneditor/*": [
+        "Resources/Public/JavaScript/*"
       ]
     },
     "outDir": "./Resources/Public/JavaScript",
