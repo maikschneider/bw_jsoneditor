@@ -249,7 +249,7 @@ div.jsoneditor-tree div.jsoneditor-date {
 
 div.jsoneditor {
   color: #1A1A1A;
-  border: thin solid #3883fa;
+  border: thin solid #424242;
   /* we use thin and not 1px to work around an issue in Chrome/IE, see #637 */
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -893,7 +893,7 @@ div.jsoneditor-contextmenu button.jsoneditor-type-modes > div.jsoneditor-icon {
   line-height: 30px;
   font-family: arial, sans-serif;
   font-size: 11pt;
-  background: #3883fa;
+  background: #424242;
   color: white;
 }
 
@@ -920,7 +920,7 @@ div.jsoneditor-contextmenu button.jsoneditor-type-modes > div.jsoneditor-icon {
 }
 
 .jsoneditor-modal a {
-  color: #3883fa;
+  color: #424242;
 }
 
 
@@ -1059,8 +1059,8 @@ div.jsoneditor-contextmenu button.jsoneditor-type-modes > div.jsoneditor-icon {
 
 .jsoneditor-modal .jsoneditor-button-group.jsoneditor-button-group-value-asc input.jsoneditor-button-asc,
 .jsoneditor-modal .jsoneditor-button-group.jsoneditor-button-group-value-desc input.jsoneditor-button-desc {
-  background: #3883fa;
-  border-color: #3883fa;
+  background: #424242;
+  border-color: #424242;
   color: white;
 }
 
@@ -1150,7 +1150,7 @@ div.jsoneditor-contextmenu button.jsoneditor-type-modes > div.jsoneditor-icon {
 }
 
 .jsoneditor-modal .selectr-selected .selectr-tag {
-  background-color: #3883fa;
+  background-color: #424242;
   border-radius: 5px;
 }
 div.jsoneditor-menu {
@@ -1162,8 +1162,8 @@ div.jsoneditor-menu {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: white;
-  background-color: #3883fa;
-  border-bottom: 1px solid #3883fa;
+  background-color: #424242;
+  border-bottom: 1px solid #424242;
 }
 
 div.jsoneditor-menu > button,
@@ -1286,6 +1286,7 @@ div.jsoneditor-menu a.jsoneditor-poweredBy {
   right: 0;
   top: 0;
   padding: 10px;
+  display: none;
 }
 table.jsoneditor-search input,
 table.jsoneditor-search div.jsoneditor-results {

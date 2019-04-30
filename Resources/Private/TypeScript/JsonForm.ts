@@ -15,14 +15,17 @@ class JsonForm {
 			let json = $(hiddenInput).val();
 			if (!json) json = '{}';
 
-			options.onChangeJSON = function(json: string){
+			try {
+				json = JSON.parse(json);
+			} catch (e) {
+
+			}
+
+			options.onChangeText = function (json: any) {
 				hiddenInput.val(json);
 			};
 
-			console.log(options);
-
-			const editor = new JSONEditor(element, options);
-			editor.set(json);
+			new JSONEditor(element, options, json);
 		});
 
 	}

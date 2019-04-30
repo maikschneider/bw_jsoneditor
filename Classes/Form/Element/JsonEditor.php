@@ -8,7 +8,9 @@ class JsonEditor extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
 {
 
     protected $defaultOptions = [
-        'mode' => 'code'
+        'mode' => 'code',
+        'modes' => ['code', 'tree', 'view', 'text'],
+        'height' => '350px'
     ];
 
     public function render()
@@ -30,8 +32,6 @@ class JsonEditor extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
 
         $parameterArray = $this->data['parameterArray'];
 
-        \TYPO3\CMS\Core\Utility\DebugUtility::debug($this->data, 'Debug: ' . __FILE__ . ' in Line: ' . __LINE__);
-
         $fieldName = $this->data['fieldName'];
         $json = $this->data['databaseRow'][$fieldName];
 
@@ -40,12 +40,12 @@ class JsonEditor extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
         $html = [];
         $html[] = '<div class="formengine-field-item t3js-formengine-field-item">';
         $html[] = '<div class="form-control-wrap">';
-        $html[] = '<div data-input="' . $parameterArray['itemFormElName'] . '" class="jsoneditor-form" data-options="' . urlencode(json_encode($this->defaultOptions)) . '">';
+        $html[] = '<div style="height:' . $this->defaultOptions['height'] . '" data-input="' . $parameterArray['itemFormElName'] . '" class="jsoneditor-form" data-options="' . urlencode(json_encode($this->defaultOptions)) . '">';
         $html[] = '</div>';
         $html[] = '</div>';
         $html[] = '</div>';
 
-        $resultArray['additionalHiddenFields'][] = '<input type="hidden" name="' . $parameterArray['itemFormElName'] . '" value="www' . htmlspecialchars($parameterArray['itemFormElValue']) . '" />';
+        $resultArray['additionalHiddenFields'][] = '<input type="hidden" name="' . $parameterArray['itemFormElName'] . '" value="' . htmlspecialchars($parameterArray['itemFormElValue']) . '" />';
 
         $resultArray['html'] = implode(LF, $html);
 

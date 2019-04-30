@@ -11,12 +11,15 @@ define(["require", "exports", "TYPO3/CMS/BwJsoneditor/jsoneditor", "jquery"], fu
                 var json = $(hiddenInput).val();
                 if (!json)
                     json = '{}';
-                options.onChangeJSON = function (json) {
+                try {
+                    json = JSON.parse(json);
+                }
+                catch (e) {
+                }
+                options.onChangeText = function (json) {
                     hiddenInput.val(json);
                 };
-                console.log(options);
-                var editor = new JSONEditor(element, options);
-                editor.set(json);
+                new JSONEditor(element, options, json);
             });
         };
         return JsonForm;
