@@ -7,10 +7,17 @@
   "keywords": [
     "TYPO3 CMS"
   ],
-  "version": "1.0.0",
   "require-dev": {
     "typo3/cms-base-distribution": "^9.0"
   },
+  "authors": [
+    {
+      "name": "Maik Schneider",
+      "email": "m.schneider@blueways.de",
+      "homepage": "https://www.blueways.de",
+      "role": "Developer"
+    }
+  ],
   "extra": {
     "typo3/cms": {
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
