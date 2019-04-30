@@ -3,6 +3,9 @@
 Integrates the [JSON Editor](https://github.com/josdejong/jsoneditor) into the TYPO3 Backend. 
 
 The extension adds a new [renderType](https://docs.typo3.org/typo3cms/TCAReference/ColumnsConfig/Type/Text.html#properties-rendertype-default) "**jsonForm**" for TCA text columns.
+
+![Screenshot](Documentation/Images/Screenshot.png)
+
 # Install
 
 ```

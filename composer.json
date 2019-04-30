@@ -1,7 +1,7 @@
 {
   "name": "blueways/bw-jsoneditor",
   "type": "typo3-cms-extension",
-  "description": "Adds a JSON form editor",
+  "description": "Adds a JSON Form Editor type to the TYPO3 Backend",
   "homepage": "https://blueways.de",
   "license": "MIT",
   "keywords": [
