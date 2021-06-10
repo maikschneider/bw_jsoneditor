@@ -35,8 +35,6 @@ class JsonEditor extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
         $fieldName = $this->data['fieldName'];
         $json = $this->data['databaseRow'][$fieldName];
 
-        //\TYPO3\CMS\Core\Utility\DebugUtility::debug($this->data, 'Debug: ' . __FILE__ . ' in Line: ' . __LINE__);
-
         $html = [];
         $html[] = '<div class="formengine-field-item t3js-formengine-field-item">';
         $html[] = '<div class="form-control-wrap">';
