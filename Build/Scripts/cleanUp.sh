@@ -1,5 +1,4 @@
 echo "Cleaning up.."
-rm -rf Documentation
 rm .gitignore
 rm -rf .ddev
 rm bitbucket-pipelines.yml
