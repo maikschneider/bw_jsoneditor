@@ -11,3 +11,4 @@ rm -rf Resources/Private/TypeScript
 rm Gruntfile.js
 rm -rf config
 rm -rf Configuration
+rm yarn.lock
