@@ -1,8 +1,8 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'JSON form Editor',
-    'description' => 'JSON editor for TYPO3 backend',
+    'title' => 'JSON Editor',
+    'description' => 'JSON form editor for the TYPO3 backend. View and edit JSON data with code formatting and syntax highlighting.',
     'category' => 'plugin',
     'author' => 'Maik Schneider',
     'author_email' => 'm.schneider@blueways.de',
@@ -11,7 +11,7 @@ $EM_CONF[$_EXTKEY] = [
     'uploadfolder' => '0',
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
-    'version' => '1.0.0',
+    'version' => '1.0.1',
     'constraints' => [
         'depends' => [
             'typo3' => '8.7.20-9.9.99',
