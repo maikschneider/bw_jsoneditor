@@ -11,3 +11,4 @@ rm package-lock.json
 rm -rf Resources/Private/TypeScript
 rm Gruntfile.js
 rm -rf config
+rm -rf Configuration
