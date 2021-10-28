@@ -26,14 +26,11 @@ class JsonEditor extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
 
         $fieldConf = $this->data['parameterArray']['fieldConf']['config'];
 
-        if (is_array($fieldConf) && is_array($fieldConf['options'])) {
+        if (is_array($fieldConf) && isset($fieldConf['options']) && is_array($fieldConf['options'])) {
             ArrayUtility::mergeRecursiveWithOverrule($this->defaultOptions, $fieldConf['options']);
         }
 
         $parameterArray = $this->data['parameterArray'];
-
-        $fieldName = $this->data['fieldName'];
-        $json = $this->data['databaseRow'][$fieldName];
 
         $html = [];
         $html[] = '<div class="formengine-field-item t3js-formengine-field-item">';
