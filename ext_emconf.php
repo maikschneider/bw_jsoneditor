@@ -3,7 +3,7 @@
 $EM_CONF[$_EXTKEY] = [
     'title' => 'JSON Editor',
     'description' => 'JSON form editor for the TYPO3 backend. View and edit JSON data with code formatting and syntax highlighting.',
-    'category' => 'plugin',
+    'category' => 'be',
     'author' => 'Maik Schneider',
     'author_email' => 'm.schneider@blueways.de',
     'state' => 'stable',
