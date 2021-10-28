@@ -5,3 +5,4 @@ vendor
 .idea
 node_modules
 !Resources/Public
+Documentation-*
