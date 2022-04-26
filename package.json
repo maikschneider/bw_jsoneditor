@@ -17,7 +17,6 @@
     "grunt-npm-install": "^0.3.1",
     "grunt-npmcopy": "^0.2.0",
     "grunt-postcss": "^0.8.0",
-    "grunt-sass": "^2.0.0",
     "grunt-stylelint": "^0.10.1",
     "grunt-tslint": "^5.0.1",
     "jquery": "^3.2.1",
