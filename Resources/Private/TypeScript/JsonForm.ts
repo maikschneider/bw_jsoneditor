@@ -7,7 +7,7 @@ export class JsonForm {
 
     const element = $('.jsoneditor-form[data-input="' + itemFormElName + '"]').get(0);
     const options = JSON.parse(decodeURIComponent($(element).attr('data-options')));
-    const hiddenInput = $('input[name="' + $(element).attr('data-input') + '"]');
+    const hiddenInput = $('input[name="' + itemFormElName + '"]');
 
     let json = $(hiddenInput).val();
     if (!json) json = '{}';
