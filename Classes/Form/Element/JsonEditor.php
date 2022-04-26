@@ -17,9 +17,6 @@ class JsonEditor extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
     {
         $resultArray = $this->initializeResultArray();
         $resultArray['stylesheetFiles'] = ['EXT:bw_jsoneditor/Resources/Public/Css/jsoneditor.css'];
-        $resultArray['requireJsModules'] = [
-            'TYPO3/CMS/BwJsoneditor/JsonForm'
-        ];
 
         $fieldWizardResult = $this->renderFieldWizard();
         $resultArray = $this->mergeChildReturnIntoExistingResult($resultArray, $fieldWizardResult, false);
@@ -39,10 +36,12 @@ class JsonEditor extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
         $html[] = '</div>';
         $html[] = '</div>';
         $html[] = '</div>';
-
-        $resultArray['additionalHiddenFields'][] = '<input type="hidden" name="' . $parameterArray['itemFormElName'] . '" value="' . htmlspecialchars($parameterArray['itemFormElValue']) . '" />';
+        $html[] = '<input type="hidden" name="' . $parameterArray['itemFormElName'] . '" value="' . htmlspecialchars($parameterArray['itemFormElValue']) . '" />';
 
         $resultArray['html'] = implode(LF, $html);
+        $resultArray['requireJsModules'][] = [
+            'TYPO3/CMS/BwJsoneditor/JsonForm' => 'function(jsonForms){ new jsonForms.JsonForm(\'' . $parameterArray['itemFormElName'] . '\');}'
+        ];
 
         return $resultArray;
     }

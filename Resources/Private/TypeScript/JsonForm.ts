@@ -1,34 +1,27 @@
 /// <amd-dependency path='TYPO3/CMS/BwJsoneditor/jsoneditor' name='JSONEditor'>
 import $ = require("jquery");
 
+export class JsonForm {
 
-class JsonForm {
-	public init() {
+  constructor(itemFormElName: string) {
 
-		const elements = $(".jsoneditor-form");
+    const element = $('.jsoneditor-form[data-input="' + itemFormElName + '"]').get(0);
+    const options = JSON.parse(decodeURIComponent($(element).attr('data-options')));
+    const hiddenInput = $('input[name="' + $(element).attr('data-input') + '"]');
 
-		$.each(elements, (i, element) => {
+    let json = $(hiddenInput).val();
+    if (!json) json = '{}';
 
-			const options = JSON.parse(decodeURIComponent($(element).attr('data-options')));
+    try {
+      json = JSON.parse(json);
+    } catch (e) {
+    }
 
-			const hiddenInput = $('input[name="' + $(element).attr('data-input') + '"]');
-			let json = $(hiddenInput).val();
-			if (!json) json = '{}';
+    options.onChangeText = function (json: any) {
+      hiddenInput.val(json);
+    };
 
-			try {
-				json = JSON.parse(json);
-			} catch (e) {
+    new JSONEditor(element, options, json);
+  }
 
-			}
-
-			options.onChangeText = function (json: any) {
-				hiddenInput.val(json);
-			};
-
-			new JSONEditor(element, options, json);
-		});
-
-	}
 }
-
-export = new JsonForm().init()
