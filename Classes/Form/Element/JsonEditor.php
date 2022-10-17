@@ -2,7 +2,10 @@
 
 namespace Blueways\BwJsoneditor\Form\Element;
 
+use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 
 class JsonEditor extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
 {
@@ -38,10 +41,19 @@ class JsonEditor extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
         $html[] = '</div>';
         $html[] = '<input type="hidden" name="' . $parameterArray['itemFormElName'] . '" value="' . htmlspecialchars($parameterArray['itemFormElValue']) . '" />';
 
+        $verionNumberUtility = GeneralUtility::makeInstance(VersionNumberUtility::class);
+        $version = $verionNumberUtility->convertVersionStringToArray($verionNumberUtility->getNumericTypo3Version());
+        if ($version['version_main'] < 12) {
+            $resultArray['requireJsModules'][] = [
+                'TYPO3/CMS/BwJsoneditor/JsonForm' => 'function(jsonForms){ new jsonForms.JsonForm(\'' . $parameterArray['itemFormElName'] . '\');}'
+            ];
+        } else {
+            $resultArray['requireJsModules'][] = JavaScriptModuleInstruction::forRequireJS(
+                'TYPO3/CMS/BwJsoneditor/JsonForm'
+            )->invoke('JsonForm', $parameterArray['itemFormElName']);
+        }
+
         $resultArray['html'] = implode(LF, $html);
-        $resultArray['requireJsModules'][] = [
-            'TYPO3/CMS/BwJsoneditor/JsonForm' => 'function(jsonForms){ new jsonForms.JsonForm(\'' . $parameterArray['itemFormElName'] . '\');}'
-        ];
 
         return $resultArray;
     }
