@@ -53,8 +53,10 @@ You can configure the JSON Editor with the `offical API <https://github.com/josd
 Help & Contribution
 -------------------
 
-This extension was made by Maik Schneider from `blueways <https://www.blueways.de/>`__. Use the `issue tracker <https://bitbucket.org/blueways/bw_jsoneditor/issues>`__ for bugs and feature requests. If you have any questions, you can `hit me up <https://slack.com/app_redirect?channel=C02KWTE8JRE>`__ at the TYPO3 Slack.
+This extension was made by Maik Schneider. Use the `issue tracker <https://github.com/maikschneider/bw_jsoneditor/issues>`__ for bugs and feature requests. If you have any questions, you can `hit me up <https://slack.com/app_redirect?channel=C02KWTE8JRE>`__ at the TYPO3 Slack.
 
 Feel free to contribute!
 
-* `Bitbucket-Repository <https://bitbucket.org/blueways/bw_jsoneditor/>`__
+* `Github-Repository <https://github.com/maikschneider/bw_jsoneditor/>`__
+
+Thanks to `blueways <https://www.blueways.de/>`__ and `XIMA <https://www.xima.de/>`__!

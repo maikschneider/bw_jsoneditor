@@ -33,3 +33,11 @@ $GLOBALS['TCA']['tt_content']['columns']['bodytext']['config']['options'] = [
 ```
 
 The new option "height" controls the height of the editor when initialized.
+
+# Contribute
+
+This extension was made by Maik Schneider: Feel free to contribute!
+
+* [Github-Repository](https://github.com/maikschneider/bw_jsoneditor)
+
+Thanks to [blueways](https://www.blueways.de/) and [XIMA](https://www.xima.de/)!
