@@ -8,14 +8,10 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'maik.schneider@xima.de',
     'author_company' => 'XIMA Media GmbH',
     'state' => 'stable',
-    'internal' => '',
-    'uploadfolder' => '0',
-    'createDirs' => '',
-    'clearCacheOnLoad' => 0,
     'version' => '1.0.4',
     'constraints' => [
         'depends' => [
-            'typo3' => '8.7.20-11.99.99',
+            'typo3' => '8.7.20-12.99.99',
         ],
         'conflicts' => [],
         'suggests' => [],
