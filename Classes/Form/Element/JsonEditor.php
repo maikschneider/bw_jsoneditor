@@ -17,14 +17,8 @@ class JsonEditor extends AbstractFormElement
     public function render(): array
     {
         $resultArray = $this->initializeResultArray();
-        $resultArray['stylesheetFiles'] = ['EXT:bw_jsoneditor/Resources/Public/Css/jsoneditor.css'];
-
-        //$fieldWizardResult = $this->renderFieldWizard();
-        $fieldWizardResult = [];
-        $resultArray = $this->mergeChildReturnIntoExistingResult($resultArray, $fieldWizardResult, false);
 
         $fieldConf = $this->data['parameterArray']['fieldConf']['config'];
-
         if (is_array($fieldConf) && isset($fieldConf['options']) && is_array($fieldConf['options'])) {
             ArrayUtility::mergeRecursiveWithOverrule($this->defaultOptions, $fieldConf['options']);
         }
@@ -40,8 +34,8 @@ class JsonEditor extends AbstractFormElement
         $html[] = '</div>';
         $html[] = '<input type="hidden" name="' . $parameterArray['itemFormElName'] . '" value="' . htmlspecialchars($parameterArray['itemFormElValue']) . '" />';
 
-        $resultArray['requireJsModules'][] = JavaScriptModuleInstruction::create(
-            '@blueways/jsoneditor/JsonForm.js'
+        $resultArray['javaScriptModules'][] = JavaScriptModuleInstruction::create(
+            '@blueways/bw-jsoneditor/JsonForm.js'
         )->instance($parameterArray['itemFormElName']);
 
         $resultArray['html'] = implode(LF, $html);

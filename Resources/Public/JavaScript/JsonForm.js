@@ -1,16 +1,14 @@
-import {createJSONEditor} from 'vanilla-jsoneditor/standalone.js'
+import {createJSONEditor} from './vanilla-jsoneditor/standalone.js'
 
-export class JsonForm {
+export default class JsonForm {
 
   constructor(itemFormElName) {
-
-    console.log('JsonForm', itemFormElName);
 
     const element = document.querySelector('.jsoneditor-form[data-input="' + itemFormElName + '"]');
     const options = JSON.parse(decodeURIComponent(element.getAttribute('data-options')));
     const hiddenInput = document.querySelector('input[name="' + itemFormElName + '"]');
 
-    let json = $(hiddenInput).val();
+    let json = hiddenInput.value;
     if (!json) json = '{}';
 
     try {

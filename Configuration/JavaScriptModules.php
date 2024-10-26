@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'dependencies' => ['backend', 'form'],
+    'dependencies' => ['backend'],
     'imports' => [
-        '@blueways/jsoneditor/' => 'EXT:bw_jsoneditor/Resources/Public/JavaScript/',
+        '@blueways/bw-jsoneditor/' => 'EXT:bw_jsoneditor/Resources/Public/JavaScript/',
     ],
 ];
