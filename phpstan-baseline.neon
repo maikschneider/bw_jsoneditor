@@ -1,0 +1,16 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Blueways\\\\BwJsoneditor\\\\Form\\\\Element\\\\JsonEditor\\:\\:render\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Form/Element/JsonEditor.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function urlencode expects string, string\\|false given\\.$#"
+			count: 1
+			path: Classes/Form/Element/JsonEditor.php
+
+		-
+			message: "#^Property Blueways\\\\BwJsoneditor\\\\Form\\\\Element\\\\JsonEditor\\:\\:\\$defaultOptions type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Classes/Form/Element/JsonEditor.php

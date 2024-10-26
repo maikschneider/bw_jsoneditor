@@ -2,26 +2,25 @@
 
 namespace Blueways\BwJsoneditor\Form\Element;
 
+use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 
-class JsonEditor extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
+class JsonEditor extends AbstractFormElement
 {
-
-    protected $defaultOptions = [
+    protected array $defaultOptions = [
         'mode' => 'code',
         'modes' => ['code', 'tree', 'view', 'text'],
-        'height' => '350px'
+        'height' => '350px',
     ];
 
-    public function render()
+    public function render(): array
     {
         $resultArray = $this->initializeResultArray();
         $resultArray['stylesheetFiles'] = ['EXT:bw_jsoneditor/Resources/Public/Css/jsoneditor.css'];
 
-        $fieldWizardResult = $this->renderFieldWizard();
+        //$fieldWizardResult = $this->renderFieldWizard();
+        $fieldWizardResult = [];
         $resultArray = $this->mergeChildReturnIntoExistingResult($resultArray, $fieldWizardResult, false);
 
         $fieldConf = $this->data['parameterArray']['fieldConf']['config'];
@@ -41,21 +40,12 @@ class JsonEditor extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
         $html[] = '</div>';
         $html[] = '<input type="hidden" name="' . $parameterArray['itemFormElName'] . '" value="' . htmlspecialchars($parameterArray['itemFormElValue']) . '" />';
 
-        $verionNumberUtility = GeneralUtility::makeInstance(VersionNumberUtility::class);
-        $version = $verionNumberUtility->convertVersionStringToArray($verionNumberUtility->getNumericTypo3Version());
-        if ($version['version_main'] < 12) {
-            $resultArray['requireJsModules'][] = [
-                'TYPO3/CMS/BwJsoneditor/JsonForm' => 'function(jsonForms){ new jsonForms.JsonForm(\'' . $parameterArray['itemFormElName'] . '\');}'
-            ];
-        } else {
-            $resultArray['requireJsModules'][] = JavaScriptModuleInstruction::forRequireJS(
-                'TYPO3/CMS/BwJsoneditor/JsonForm'
-            )->invoke('JsonForm', $parameterArray['itemFormElName']);
-        }
+        $resultArray['requireJsModules'][] = JavaScriptModuleInstruction::create(
+            '@blueways/jsoneditor/JsonForm.js'
+        )->instance($parameterArray['itemFormElName']);
 
         $resultArray['html'] = implode(LF, $html);
 
         return $resultArray;
     }
-
 }
