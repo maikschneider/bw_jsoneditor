@@ -32,6 +32,7 @@ class JsonEditor extends AbstractFormElement
 
         // add stylesheet
         $resultArray['stylesheetFiles'][] = 'EXT:bw_jsoneditor/Resources/Public/JavaScript/vanilla-jsoneditor/themes/jse-theme-dark.css';
+        $resultArray['stylesheetFiles'][] = 'EXT:bw_jsoneditor/Resources/Public/Css/typo3-theme.css';
 
         // editor options
         $options = self::DEFAULT_OPTIONS;
