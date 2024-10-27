@@ -18,7 +18,7 @@ export default class JsonEditor {
       text: hiddenInput.value,
     }
 
-    const editor = createJSONEditor({
+    createJSONEditor({
       target: element,
       props: {
         content,
@@ -49,9 +49,7 @@ export default class JsonEditor {
   }
 
   isDarkMode() {
-    const htmlElement = document.querySelector('html')
-
-    if (htmlElement.getAttribute('data-color-scheme') === 'dark') {
+    if (document.querySelector('html').getAttribute('data-color-scheme') === 'dark') {
       return true
     }
 

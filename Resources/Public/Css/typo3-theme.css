@@ -1,6 +1,6 @@
 :root {
     --jse-theme-color: #fff;
-    --jse-menu-color: var(--token-color-neutral-90);
+    --jse-menu-color: var(--token-color-neutral-90, #000);
     --jse-theme-color-highlight: var(--ck-color-button-default-hover-background, #f0f0f0);
     --jse-font-size: 13px;
     --jse-font-size-mono: 12px;

@@ -14,7 +14,7 @@ class JsonEditor extends AbstractFormElement
     protected const DEFAULT_OPTIONS = [
         'mode' => 'text',
         'modes' => ['text', 'tree', 'table'],
-        'height' => '350px',
+        'height' => 'auto',
     ];
 
     protected $defaultFieldInformation = [
