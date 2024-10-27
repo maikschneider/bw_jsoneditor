@@ -1,13 +1,13 @@
 {
-  "name": "bw-jsoneditor",
-  "version": "2.0.0",
-  "description": "JSON form editor for the TYPO3 backend",
-  "scripts": {
-    "build": "cp -r node_modules/vanilla-jsoneditor Resources/Public/JavaScript/"
-  },
-  "author": "Maik Schneider",
-  "license": "MIT",
-  "dependencies": {
-    "vanilla-jsoneditor": "^1.1.2"
-  }
+	"name": "bw-jsoneditor",
+	"version": "2.0.0",
+	"description": "JSON form editor for the TYPO3 backend",
+	"scripts": {
+		"build": "cp -r node_modules/vanilla-jsoneditor Resources/Public/JavaScript/"
+	},
+	"author": "Maik Schneider",
+	"license": "MIT",
+	"dependencies": {
+		"vanilla-jsoneditor": "^1.1.2"
+	}
 }

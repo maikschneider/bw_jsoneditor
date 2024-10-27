@@ -1,44 +1,44 @@
 :root {
-	--jse-theme-color: #fff;
-	--jse-menu-color: var(--token-color-neutral-90);
-	--jse-theme-color-highlight: var(--ck-color-button-default-hover-background, #f0f0f0);
-	--jse-font-size: 13px;
-	--jse-font-size-mono: 12px;
-	--jse-font-size-main-menu: 15px;
+    --jse-theme-color: #fff;
+    --jse-menu-color: var(--token-color-neutral-90);
+    --jse-theme-color-highlight: var(--ck-color-button-default-hover-background, #f0f0f0);
+    --jse-font-size: 13px;
+    --jse-font-size-mono: 12px;
+    --jse-font-size-main-menu: 15px;
 }
 
 .jse-menu {
-	padding: 3px;
-	border: 1px solid var(--ck-color-base-border, #ccced1);
-	border-top-left-radius: 2px !important;
-	border-top-right-radius: 2px !important;
+    padding: 3px;
+    border: 1px solid var(--ck-color-base-border, #ccced1);
+    border-top-left-radius: 2px !important;
+    border-top-right-radius: 2px !important;
 }
 
 .jse-menu button:not(.jse-group-button) {
-	border-radius: 2px !important;
+    border-radius: 2px !important;
 }
 
 .jse-menu button.jse-group-button.jse-first {
-	border-top-left-radius: 2px !important;
-	border-bottom-left-radius: 2px !important;
+    border-top-left-radius: 2px !important;
+    border-bottom-left-radius: 2px !important;
 }
 
 .jse-menu button.jse-group-button.jse-last {
-	border-top-right-radius: 2px !important;
-	border-bottom-right-radius: 2px !important;
+    border-top-right-radius: 2px !important;
+    border-bottom-right-radius: 2px !important;
 }
 
 .jse-menu .jse-separator {
-	margin: 5px !important;
+    margin: 5px !important;
 }
 
 .jse-theme-dark {
-	--jse-theme-color: var(--token-color-neutral-85);
-	--jse-menu-color: var(--token-color-neutral-15);
-	--jse-panel-background: var(--token-color-neutral-85);
-	--jse-theme-color-highlight: var(--token-color-neutral-75);
+    --jse-theme-color: var(--token-color-neutral-85);
+    --jse-menu-color: var(--token-color-neutral-15);
+    --jse-panel-background: var(--token-color-neutral-85);
+    --jse-theme-color-highlight: var(--token-color-neutral-75);
 }
 
 .jse-theme-dark .jse-menu {
-	border: 1px solid var(--token-color-neutral-70);
+    border: 1px solid var(--token-color-neutral-70);
 }
