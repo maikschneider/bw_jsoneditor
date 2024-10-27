@@ -7,6 +7,7 @@ export default class JsonEditor {
     const element = document.querySelector(`#${fieldId}`);
     const inputName = element.getAttribute('data-formengine-input-name');
     const hiddenInput = document.querySelector(`input[name="${inputName}"]`);
+    const formGroup = element.closest('.form-group')
 
     console.log(fieldId, element)
 
@@ -20,10 +21,13 @@ export default class JsonEditor {
         content,
         mode: 'text',
         onChange: (updatedContent, previousContent, {contentErrors, patchResult}) => {
-          // content is an object { json: unknown } | { text: string }
-          console.log('onChange', {updatedContent, previousContent, contentErrors, patchResult})
-          content = updatedContent
-          hiddenInput.value = updatedContent.text
+
+          if (contentErrors) {
+            formGroup.classList.add('has-error')
+          } else {
+            formGroup.classList.remove('has-error')
+            hiddenInput.value = updatedContent.text
+          }
         }
       }
     })
