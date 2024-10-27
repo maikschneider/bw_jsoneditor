@@ -3,43 +3,66 @@
 namespace Blueways\BwJsoneditor\Form\Element;
 
 use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\StringUtility;
 
 class JsonEditor extends AbstractFormElement
 {
-    protected array $defaultOptions = [
-        'mode' => 'code',
-        'modes' => ['code', 'tree', 'view', 'text'],
+    protected const DEFAULT_OPTIONS = [
+        'mode' => 'text',
+        'modes' => ['text', 'tree', 'table'],
         'height' => '350px',
+    ];
+
+    protected $defaultFieldInformation = [
+        'tcaDescription' => [
+            'renderType' => 'tcaDescription',
+        ],
     ];
 
     public function render(): array
     {
-        $resultArray = $this->initializeResultArray();
-
-        $fieldConf = $this->data['parameterArray']['fieldConf']['config'];
-        if (is_array($fieldConf) && isset($fieldConf['options']) && is_array($fieldConf['options'])) {
-            ArrayUtility::mergeRecursiveWithOverrule($this->defaultOptions, $fieldConf['options']);
-        }
-
         $parameterArray = $this->data['parameterArray'];
+        $fieldInformationResult = $this->renderFieldInformation();
+        $fieldInformationHtml = $fieldInformationResult['html'];
+        $resultArray = $this->mergeChildReturnIntoExistingResult($this->initializeResultArray(), $fieldInformationResult, false);
 
-        $html = [];
-        $html[] = '<div class="formengine-field-item t3js-formengine-field-item">';
-        $html[] = '<div class="form-control-wrap">';
-        $html[] = '<div style="height:' . $this->defaultOptions['height'] . '" data-input="' . $parameterArray['itemFormElName'] . '" class="jsoneditor-form" data-options="' . urlencode(json_encode($this->defaultOptions)) . '">';
-        $html[] = '</div>';
-        $html[] = '</div>';
-        $html[] = '</div>';
-        $html[] = '<input type="hidden" name="' . $parameterArray['itemFormElName'] . '" value="' . htmlspecialchars($parameterArray['itemFormElValue']) . '" />';
+        // add stylesheet
+        $resultArray['stylesheetFiles'][] = 'EXT:bw_jsoneditor/Resources/Public/JavaScript/vanilla-jsoneditor/themes/jse-theme-dark.css';
+
+        // editor options
+        $options = self::DEFAULT_OPTIONS;
+        ArrayUtility::mergeRecursiveWithOverrule($options, $parameterArray['fieldConf']['config']['options'] ?? []);
+
+        $fieldId = StringUtility::getUniqueId('formengine-input-');
+        $itemName = (string)$parameterArray['itemFormElName'];
+        $itemValue = $parameterArray['itemFormElValue'];
 
         $resultArray['javaScriptModules'][] = JavaScriptModuleInstruction::create(
-            '@blueways/bw-jsoneditor/JsonForm.js'
-        )->instance($parameterArray['itemFormElName']);
+            '@blueways/bw-jsoneditor/JsonEditor.js'
+        )->instance($fieldId, $options);
+
+        $versionInformation = GeneralUtility::makeInstance(Typo3Version::class);
+
+        $html = [];
+        if ($versionInformation->getMajorVersion() > 12) {
+            $html[] = $this->renderLabel($fieldId);
+        }
+        $html[] = '<div class="formengine-field-item">';
+        $html[] = $fieldInformationHtml;
+        $html[] = '<div class="form-control-wrap">';
+        $html[] = '<div style="height:' . $options['height'] . '" id="' . htmlspecialchars($fieldId) . '" data-formengine-input-name="' . htmlspecialchars($itemName) . '">';
+        $html[] = '</div>';
+        $html[] = '</div>';
+        $html[] = '</div>';
+        $html[] = '<input type="hidden" name="' . htmlspecialchars($itemName) . '" value="' . htmlspecialchars((string)$itemValue) . '" />';
 
         $resultArray['html'] = implode(LF, $html);
 
         return $resultArray;
     }
+
 }
