@@ -6,3 +6,8 @@ vendor
 node_modules
 !Resources/Public
 Documentation-*
+
+config/
+Configuration/TCA/Overrides/tt_content.php
+ContentBlocks/
+ext_tables.sql

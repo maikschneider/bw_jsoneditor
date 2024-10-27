@@ -21,8 +21,10 @@
 		"armin/editorconfig-cli": "^2.0",
 		"ergebnis/composer-normalize": "^2.44",
 		"friendsofphp/php-cs-fixer": "^3.12",
+		"friendsoftypo3/content-blocks": "^0.7.18 || ^1.0.0",
 		"helhum/typo3-console": "^8.0",
 		"helmich/typo3-typoscript-lint": "^3.2",
+		"nikic/php-parser": "4.19.4 as 5.3.1",
 		"saschaegerer/phpstan-typo3": "^1.1",
 		"ssch/typo3-rector": "^2.10",
 		"symfony/translation": "^7.1"
@@ -56,12 +58,14 @@
 		"ci:php:fixer": "php-cs-fixer --config=php-cs-fixer.php fix --dry-run --format=checkstyle > php-cs-fixer.xml || true",
 		"ci:php:lint": "find *.php . -name '*.php' ! -path './vendor/*'  ! -path './var/*' ! -path '*node_modules/*' -print0 | xargs -0 -n 1 -P 4 php -l",
 		"ci:php:stan": "phpstan --no-progress --error-format=checkstyle > phpstan.xml || true",
+		"ci:rector": "rector --no-interaction --dry-run",
 		"ci:sca": [
 			"@ci:composer:normalize",
 			"@ci:editorconfig:lint",
 			"@ci:php:lint",
 			"@ci:php:fixer",
 			"@ci:php:stan",
+			"@ci:php:rector",
 			"@ci:typoscript:lint",
 			"@ci:xml:lint",
 			"@ci:yaml:lint"
@@ -73,14 +77,15 @@
 		"editorconfig:lint": "ec --strict --fix --git-only -n",
 		"php:fixer": "php-cs-fixer --config=php-cs-fixer.php fix",
 		"php:lint": "find *.php . -name '*.php' ! -path './vendor/*'  ! -path './var/*' ! -path '*node_modules/*' -print0 | xargs -0 -n 1 -P 4 php -l",
-		"php:rector": "rector",
 		"php:stan": "phpstan --generate-baseline=phpstan-baseline.neon --allow-empty-baseline",
+		"rector": "rector",
 		"sca": [
 			"@composer:normalize",
 			"@editorconfig:lint",
 			"@php:lint",
 			"@php:fixer",
 			"@php:stan",
+			"@rector",
 			"@typoscript:lint",
 			"@xml:lint",
 			"@yaml:lint"
