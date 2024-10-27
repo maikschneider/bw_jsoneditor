@@ -1,13 +1,13 @@
-name: test-build-release
-
-on: [ push ]
+name: Release
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
-
-  release:
-    if: github.ref == 'refs/heads/development'
-    uses: maikschneider/reusable-workflows/.github/workflows/release-typo3-extension.yml@main
+  ter-publish:
+    uses: maikschneider/reusable-workflows/.github/workflows/release.yml@main
     secrets:
-      teams-webhook-url: ${{ secrets.TEAMS_WEBHOOK_URL }}
+      typo3-api-token: ${{ secrets.TYPO3_API_TOKEN }}
     with:
-      base-branch: master
+      typo3-extension-key: 'bw_jsoneditor'
