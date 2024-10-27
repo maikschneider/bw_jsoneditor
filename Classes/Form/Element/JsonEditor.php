@@ -30,8 +30,13 @@ class JsonEditor extends AbstractFormElement
         $fieldInformationHtml = $fieldInformationResult['html'];
         $resultArray = $this->mergeChildReturnIntoExistingResult($this->initializeResultArray(), $fieldInformationResult, false);
 
-        // add stylesheet
-        $resultArray['stylesheetFiles'][] = 'EXT:bw_jsoneditor/Resources/Public/JavaScript/vanilla-jsoneditor/themes/jse-theme-dark.css';
+        $versionInformation = GeneralUtility::makeInstance(Typo3Version::class);
+        $typo3MajorVersion = $versionInformation->getMajorVersion();
+
+        // add stylesheets
+        if ($typo3MajorVersion > 12) {
+            $resultArray['stylesheetFiles'][] = 'EXT:bw_jsoneditor/Resources/Public/JavaScript/vanilla-jsoneditor/themes/jse-theme-dark.css';
+        }
         $resultArray['stylesheetFiles'][] = 'EXT:bw_jsoneditor/Resources/Public/Css/typo3-theme.css';
 
         // editor options
@@ -44,12 +49,10 @@ class JsonEditor extends AbstractFormElement
 
         $resultArray['javaScriptModules'][] = JavaScriptModuleInstruction::create(
             '@blueways/bw-jsoneditor/JsonEditor.js'
-        )->instance($fieldId, $options);
-
-        $versionInformation = GeneralUtility::makeInstance(Typo3Version::class);
+        )->instance($fieldId, $options, $typo3MajorVersion);
 
         $html = [];
-        if ($versionInformation->getMajorVersion() > 12) {
+        if ($typo3MajorVersion > 12) {
             $html[] = $this->renderLabel($fieldId);
         }
         $html[] = '<div class="formengine-field-item">';
@@ -65,5 +68,4 @@ class JsonEditor extends AbstractFormElement
 
         return $resultArray;
     }
-
 }
