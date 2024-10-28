@@ -82,4 +82,4 @@ The new option ``height`` controls the maximum height of the editor, it defaults
 License
 -------
 
-This project is licensed under `GNU General Public License 2.0 (or later) <LICENSE.md>`__.
+This project is licensed under GNU General Public License 2.0 (or later).
