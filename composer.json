@@ -1,6 +1,6 @@
 {
 	"name": "blueways/bw-jsoneditor",
-	"description": "Adds a JSON Form Editor type to the TYPO3 Backend. View and edit JSON data with code formatting and syntax highlighting.",
+	"description": "Adds a JSON Form Editor type to the TYPO3 Backend. Edit JSON data with code formatting, syntax highlighting, auto repair and more.",
 	"license": "GPL-2.0-or-later",
 	"type": "typo3-cms-extension",
 	"keywords": [
