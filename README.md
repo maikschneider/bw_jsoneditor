@@ -31,7 +31,7 @@ Download the zip file from [TYPO3 extension repository (TER)](https://extensions
 
 ## Usage
 
-The extension adds a new [custom input](https://docs.typo3.org/m/typo3/reference-tca/main/en-us/ColumnsConfig/Type/User/Index.html) of
+The extension adds a new [custom input](https://docs.typo3.org/m/typo3/reference-tca/main/en-us/ColumnsConfig/Type/User/Index.html) with
 renderType `jsonEditor`. You can use the new type in TCA or Content Blocks.
 
 ### TCA
