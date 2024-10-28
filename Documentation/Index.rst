@@ -1,62 +1,85 @@
 JSON Form Editor
 ================
 
-Integrates the `JSON Editor <https://github.com/josdejong/jsoneditor>`__ into the TYPO3 Backend.
+Integrates the `svelte-jsoneditor <https://github.com/josdejong/jsoneditor>`__ into the TYPO3 Backend.
 
-The extension adds a new `renderType <https://docs.typo3.org/m/typo3/reference-tca/master/en-us/ColumnsConfig/Type/Text/Index.html>`__ "jsonForm" for TCA text columns.
-
-.. figure:: ./Images/Screenshot.png
-   :alt: Backend form with JSON Editor element
-   :class: with-shadow
-
+.. image:: Images/Screenshot.png
+:alt: Screenshot
 
 Installation
 ------------
 
-.. rst-class:: bignums-tip
+Composer
+~~~~~~~~
 
-1. Install via composer
+.. code-block:: bash
 
-   .. code:: bash
+    composer require blueways/bw-jsoneditor
 
-      composer require blueways/bw-jsoneditor
+TER
+~~~
 
-2. Done
-
-   That's it, no configuration needed. Just make sure the extension is enabled and start adjusting your TCA.
+Download the zip file from `TYPO3 extension repository (TER) <https://extensions.typo3.org/extension/bw_jsoneditor>`__.
 
 Usage
 -----
 
-You can set or override any TCA column:
+The extension adds a new `custom input <https://docs.typo3.org/m/typo3/reference-tca/main/en-us/ColumnsConfig/Type/User/Index.html>`__ with renderType ``jsonEditor``. You can use the new type in TCA or Content Blocks.
 
-.. code:: php
+TCA
+~~~
 
-   $GLOBALS['TCA']['tt_content']['columns']['bodytext']['config']['renderType'] = 'jsonForm';
+When adding a new field to your TCA, use the type ``user`` and the renderType ``jsonEditor``:
 
+.. code-block:: php
+
+    ExtensionManagementUtility::addTCAcolumns('my_table', [
+        'new_field' => [
+            'label' => 'My JSON Field',
+            'config' => [
+                'type' => 'user',
+                'renderType' => 'jsonEditor',
+            ],
+        ],
+    ]);
+
+Make sure the database column of your field is large enough:
+
+.. code-block:: sql
+
+    -- ext_tables.sql
+
+    CREATE TABLE my_table (
+        new_field text
+    );
+
+Content Blocks
+~~~~~~~~~~~~~~
+
+You can use the new renderType in Content Blocks by adding the following configuration:
+
+.. code-block:: yaml
+
+    fields:
+        -   identifier: new_field
+            label: 'My JSON Field'
+            type: Textarea
+            renderType: jsonEditor
 
 Configuration
 -------------
 
-You can configure the JSON Editor with the `offical API <https://github.com/josdejong/jsoneditor/blob/master/docs/api.md>`__ by adding the settings to the options array:
+You can configure the JSON Editor with the `official API <https://github.com/josdejong/svelte-jsoneditor?tab=readme-ov-file#api>`__ by adding the settings to the options array:
 
-.. code:: php
+.. code-block:: php
 
-   $GLOBALS['TCA']['tt_content']['columns']['bodytext']['config']['options'] = [
-      'mode' => 'tree'
-   ];
+    $GLOBALS['TCA']['my_table']['columns']['my_field']['config']['options'] = [
+        'mode' => 'tree'
+    ];
 
-.. note::
+The new option ``height`` controls the maximum height of the editor, it defaults to ``auto``. Setting a value in pixels will set a fixed height to the editor.
 
-   The new option "height" controls the height of the editor when initialized.
+License
+-------
 
-Help & Contribution
--------------------
-
-This extension was made by Maik Schneider. Use the `issue tracker <https://github.com/maikschneider/bw_jsoneditor/issues>`__ for bugs and feature requests. If you have any questions, you can `hit me up <https://slack.com/app_redirect?channel=C02KWTE8JRE>`__ at the TYPO3 Slack.
-
-Feel free to contribute!
-
-* `Github-Repository <https://github.com/maikschneider/bw_jsoneditor/>`__
-
-Thanks to `blueways <https://www.blueways.de/>`__ and `XIMA <https://www.xima.de/>`__!
+This project is licensed under `GNU General Public License 2.0 (or later) <LICENSE.md>`__.
