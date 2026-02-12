@@ -15,7 +15,7 @@
 		}
 	],
 	"require": {
-		"typo3/cms-core": "^12.0 || ^13.0"
+		"typo3/cms-core": "^12.0 || ^13.0 || ^14.0"
 	},
 	"require-dev": {
 		"armin/editorconfig-cli": "^2.0",
@@ -24,9 +24,8 @@
 		"friendsoftypo3/content-blocks": "^0.7.18 || ^1.0.0",
 		"helhum/typo3-console": "^8.0",
 		"helmich/typo3-typoscript-lint": "^3.2",
-		"nikic/php-parser": "4.19.4 as 5.3.1",
-		"saschaegerer/phpstan-typo3": "^1.1",
-		"ssch/typo3-rector": "^2.10",
+		"saschaegerer/phpstan-typo3": "^1.1 || ^2.0",
+		"ssch/typo3-rector": "^2.10 || ^3.0",
 		"symfony/translation": "^7.1"
 	},
 	"autoload": {
