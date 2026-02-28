@@ -9,6 +9,3 @@ Documentation-*
 package-lock.json
 
 config/
-Configuration/TCA/Overrides/tt_content.php
-ContentBlocks/
-ext_tables.sql
