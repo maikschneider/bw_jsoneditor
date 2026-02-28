@@ -7,8 +7,8 @@ node_modules
 !Resources/Public
 Documentation-*
 package-lock.json
-
+c3.php
 config/
-Configuration/TCA/Overrides/tt_content.php
 ContentBlocks/
-ext_tables.sql
+Tests/Acceptance/_output
+Tests/Acceptance/Support/_generated
