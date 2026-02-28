@@ -8,6 +8,7 @@
 [![Supported TYPO3 versions](https://typo3-badges.dev/badge/bw_jsoneditor/typo3/shields.svg)](https://extensions.typo3.org/extension/bw_jsoneditor)
 ![Total downloads](https://typo3-badges.dev/badge/bw_jsoneditor/downloads/shields.svg)
 [![Composer](https://typo3-badges.dev/badge/bw_jsoneditor/composer/shields.svg)](https://packagist.org/packages/blueways/bw-jsoneditor)
+[![codecov](https://codecov.io/gh/maikschneider/bw_jsoneditor/graph/badge.svg?token=MW65NLCQY3)](https://codecov.io/gh/maikschneider/bw_jsoneditor)
 
 </div>
 
