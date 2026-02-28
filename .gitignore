@@ -7,5 +7,6 @@ node_modules
 !Resources/Public
 Documentation-*
 package-lock.json
-
+c3.php
 config/
+ContentBlocks/

@@ -19,23 +19,35 @@
 	},
 	"require-dev": {
 		"armin/editorconfig-cli": "^2.0",
+		"codeception/c3": "^2.9",
+		"codeception/codeception": "^5.1",
+		"codeception/module-asserts": "^3.0",
+		"codeception/module-cli": "^2.0",
+		"codeception/module-db": "^3.2",
+		"codeception/module-webdriver": "^4.0",
 		"ergebnis/composer-normalize": "^2.44",
 		"friendsofphp/php-cs-fixer": "^3.12",
-		"friendsoftypo3/content-blocks": "^0.7.18 || ^1.0.0",
 		"helhum/typo3-console": "^8.0",
 		"helmich/typo3-typoscript-lint": "^3.2",
 		"nikic/php-parser": "4.19.4 as 5.3.1",
 		"saschaegerer/phpstan-typo3": "^1.1",
 		"ssch/typo3-rector": "^2.10",
-		"symfony/translation": "^7.1"
+		"symfony/translation": "^7.1",
+		"typo3/testing-framework": "^8.2 || ^9.0"
 	},
 	"autoload": {
 		"psr-4": {
 			"Blueways\\BwJsoneditor\\": "Classes/"
 		}
 	},
+	"autoload-dev": {
+		"psr-4": {
+			"Blueways\\BwJsoneditorTest\\": "Tests/"
+		}
+	},
 	"config": {
 		"allow-plugins": {
+			"codeception/c3": true,
 			"ergebnis/composer-normalize": true,
 			"helhum/typo3-console-plugin": true,
 			"typo3/class-alias-loader": true,
@@ -53,6 +65,9 @@
 		}
 	},
 	"scripts": {
+		"post-autoload-dump": [
+			"@environment:prepare"
+		],
 		"ci:composer:normalize": "@composer normalize --no-check-lock --dry-run",
 		"ci:editorconfig:lint": "ec --strict --git-only -n",
 		"ci:php:fixer": "php-cs-fixer --config=php-cs-fixer.php fix --dry-run --format=checkstyle > php-cs-fixer.xml || true",
@@ -70,11 +85,15 @@
 			"@ci:xml:lint",
 			"@ci:yaml:lint"
 		],
+		"ci:test:acceptance": "codecept run Acceptance --coverage --coverage-xml",
 		"ci:typoscript:lint": "typoscript-lint --fail-on-warnings",
 		"ci:xml:lint": "find ./ -name '*.xlf' ! -path './vendor/*' ! -path './var/*' | xargs -r xmllint --schema vendor/symfony/translation/Resources/schemas/xliff-core-1.2-transitional.xsd --noout",
 		"ci:yaml:lint": "find ./ ! -path './vendor/*' ! -path '*/node_modules/*' \\( -name '*.yaml' -o -name '*.yml' \\) | xargs -r yaml-lint",
 		"composer:normalize": "@composer normalize --no-check-lock",
 		"editorconfig:lint": "ec --strict --fix --git-only -n",
+		"environment:prepare": [
+			"codecept build"
+		],
 		"php:fixer": "php-cs-fixer --config=php-cs-fixer.php fix",
 		"php:lint": "find *.php . -name '*.php' ! -path './vendor/*'  ! -path './var/*' ! -path '*node_modules/*' -print0 | xargs -0 -n 1 -P 4 php -l",
 		"php:stan": "phpstan --generate-baseline=phpstan-baseline.neon --allow-empty-baseline",
