@@ -10,3 +10,5 @@ package-lock.json
 c3.php
 config/
 ContentBlocks/
+Tests/Acceptance/_output
+Tests/Acceptance/Support/_generated
