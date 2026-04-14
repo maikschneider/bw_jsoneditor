@@ -4,6 +4,7 @@
 /.editorconfig export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore
+Configuration/TCA/Overrides export-ignore
 /codeception.yml export-ignore
 /ext_tables.sql export-ignore
 /packaging_exclude.php export-ignore
